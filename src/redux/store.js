@@ -14,19 +14,9 @@ const allReducers = combineReducers({
   foodMenu: foodMenuReducer,
 });
 
-// const sagaMiddleware = createSagaMiddleware();
-
-// export const store = createStore(allReducers, applyMiddleware(sagaMiddleware));
-
-// sagaMiddleware.run(watcherSaga);
-
 const sagaMiddleware = createSagaMiddleware();
 
-const reduxDevTools =
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-
-const middleware = compose(applyMiddleware(sagaMiddleware), reduxDevTools);
-
-export const store = createStore(allReducers, middleware);
+export const store = createStore(allReducers, applyMiddleware(sagaMiddleware));
 
 sagaMiddleware.run(watcherSaga);
+
